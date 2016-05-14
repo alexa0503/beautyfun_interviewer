@@ -16,7 +16,7 @@ class WechatAuthMiddleware
     public function handle($request, Closure $next)
     {
         $request->session()->set('wechat.redirect_uri', $request->getUri());
-        if( null == $request->session()->get('wechat.openid') && $request->getClientIp() != '127.0.0.1'){
+        if( null == $request->session()->get('wechat.id') && $request->getClientIp() != '127.0.0.1'){
             return redirect('/wechat/auth');
         }
         return $next($request);
