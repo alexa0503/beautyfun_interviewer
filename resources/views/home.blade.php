@@ -78,11 +78,11 @@
             <div class="page4Img1"></div>
             <div class="page4Img2">
                 <div class="innerDiv">
-                    <input type="text" class="page4Txt page4Txt1" maxlength="20">
-                    <input type="tel" class="page4Txt page4Txt2" maxlength="11">
-                    <input type="text" class="page4Txt page4Txt3" maxlength="50">
+                    <input type="text" class="page4Txt page4Txt1" maxlength="20" value="@if($info != null){{$info->name}}@endif">
+                    <input type="tel" class="page4Txt page4Txt2" maxlength="11" value="@if($info != null){{$info->name}}@endif">
+                    <input type="text" class="page4Txt page4Txt3" maxlength="50" value="@if($info != null){{$info->name}}@endif">
                     <a href="javascript:void(0);" class="abs page4Submit" onClick="submitInfo('{{url("post")}}');"><img src="{{asset('images/space.gif')}}" width="249" height="103"></a>
-                    <img src="{{asset('images/end1Img4.png')}}" class="page4Pop abs" style="display:none;">
+                    <img src="{{asset('images/end1Img4.png')}}" class="page4Pop abs" style="@if($info == null || $info->has_win == 0)display:none;@endif">
                 </div>
             </div>
             <div class="page4Img3"></div>
@@ -115,3 +115,4 @@
     <div class="pop popShare" onClick="closePop();" style="display:none;"></div>
     {!! csrf_field() !!}
 @endsection
+

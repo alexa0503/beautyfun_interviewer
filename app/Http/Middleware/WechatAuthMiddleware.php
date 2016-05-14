@@ -19,6 +19,9 @@ class WechatAuthMiddleware
         if( null == $request->session()->get('wechat.id') && $request->getClientIp() != '127.0.0.1'){
             return redirect('/wechat/auth');
         }
+        elseif($request->getClientIp() == '127.0.0.1'){
+            \Session::set('wechat.id', 1);
+        }
         return $next($request);
     }
 }

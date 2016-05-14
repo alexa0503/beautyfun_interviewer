@@ -273,15 +273,15 @@ function goLottery(url) {
             dataType:'json',
             type:'post',
             success:function (json) {
-                if ( json.ret == 0 && json.win == 1 ){
+                if ( json.ret == 0 && json.has_win == 1 ){
                     //中奖
                     $('.page3').fadeOut(500);
                     $('.page4').fadeIn(500);
                 }
-                else if ( json.ret == 0){
+                else if ( json.ret == 0 && json.has_win == 0){
                     //不中奖
-                    //$('.page3').fadeOut(500);
-                    //$('.page5').fadeIn(500);
+                    $('.page3').fadeOut(500);
+                    $('.page5').fadeIn(500);
                 }
                 else{
                     alert(json.msg);
