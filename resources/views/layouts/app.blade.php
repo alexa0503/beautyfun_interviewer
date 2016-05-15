@@ -6,6 +6,41 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>{{env('PAGE_TITLE')}}</title>
     <link rel="stylesheet" href="{{asset('css/common.css')}}">
+    <script>
+        var shareData = {
+            'title': '{{env("WECHAT_SHARE_TITLE")}}',
+            'desc': '{{env("WECHAT_SHARE_DESC")}}',
+            'link': '{{env("APP_URL")}}',
+            'imgUrl': '{{env("APP_URL")}}' + '{{env("WECHAT_SHARE_IMG")}}'
+        }
+        function wxShare(data) {
+            /* 请修改以下文字和图片，定制分享文案 */
+            DATAForWeixin.setTimeLine({
+                title: data.desc,
+                imgUrl: data.imgUrl,
+                link: data.link
+                //success:function(){}
+            });
+            DATAForWeixin.setAppMessage({
+                title: data.title,
+                desc: data.desc,
+                imgUrl: data.imgUrl,
+                link: data.link
+                //success:function(){}
+            });
+            DATAForWeixin.setQQ({
+                title: data.title,
+                desc: data.desc,
+                imgUrl: data.imgUrl,
+                link: data.link
+            });
+        }
+        function updateShare() {
+            shareData.title = '【{{\Session::get("wechat.nickname")}}】'+'参加了职场招聘大会，获得面试官的青睐，静待Offer！';
+            shareData.dec = '面试官还送神秘大礼？';
+            wxShare(shareData);
+        }
+    </script>
     <script src="{{asset('js/jquery-1.9.1.min.js')}}"></script>
     <script src="{{asset('js/jquery.imgpreload.js')}}"></script>
     <script src="{{asset('js/common.js')}}"></script>
@@ -37,41 +72,17 @@
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script src="http://wx.addechina.net/resources/Scripts/weixinjssdk.js"></script>
 <script type="text/javascript">
-    var shareData = {
-        'title': '{{env("WECHAT_SHARE_TITLE")}}',
-        'desc': '{{env("WECHAT_SHARE_DESC")}}',
-        'link': '{{env("APP_URL")}}',
-        'imgUrl': '{{env("APP_URL")}}' + '{{env("WECHAT_SHARE_IMG")}}'
-    }
     // 可设置为 true 以调试
     DATAForWeixin.debug = true;
     //账号的appid
     DATAForWeixin.appId = '{{env("WECHAT_APPID")}}';
     DATAForWeixin.openid = '';
     DATAForWeixin.sharecampaign = '{{env("WECHAT_CAMPAIGN_NAME")}}';//campaign名称
-
-    /* 请修改以下文字和图片，定制分享文案 */
-    DATAForWeixin.setTimeLine({
-        title: shareData.desc,
-        imgUrl: shareData.imgUrl,
-        link: shareData.link
-        //success:function(){}
-    });
-    DATAForWeixin.setAppMessage({
-        title: shareData.title,
-        desc: shareData.desc,
-        imgUrl: shareData.imgUrl,
-        link: shareData.link
-        //success:function(){}
-    });
-    DATAForWeixin.setQQ({
-        title: shareData.title,
-        desc: shareData.desc,
-        imgUrl: shareData.imgUrl,
-        link: shareData.link
-    });
-
+@if(null == $info)
+    wxShare(shareData);
+@else
+    updateShare();
+@endif
 </script>
-@yield('scripts')
 </body>
 </html>

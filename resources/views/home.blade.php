@@ -66,7 +66,7 @@
             <div class="page3Img">
                 <div class="innerDiv">
                     <div class="page3Btn">
-                        <a href="javascript:void(0);" onClick="goLottery('{{url("lottery")}}');" style="display:inline-block; width:100%; height:100%;">
+                        <a href="javascript:void(0);" onClick="goLottery('{{url("lottery")}}');updateShare();" style="display:inline-block; width:100%; height:100%;">
                             <img src="{{asset('images/space.gif')}}" width="100%" height="100%">
                         </a>
                     </div>

@@ -263,7 +263,6 @@ var canGoLottery = true;
 function goLottery(url) {
     if (canGoLottery) {
         canGoLottery = false;//加锁
-
         //ajax请求抽奖
         var data = {_token:$("input[name='_token']").val()};
         //ajax成功
