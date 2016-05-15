@@ -36,7 +36,7 @@
             });
         }
         function updateShare() {
-            shareData.title = '【{{\Session::get("wechat.nickname")}}】'+'参加了职场招聘大会，获得面试官的青睐，静待Offer！';
+            shareData.title = '【{{json_decode(\Session::get("wechat.nickname"))}}】'+'参加了职场招聘大会，获得面试官的青睐，静待Offer！';
             shareData.dec = '面试官还送神秘大礼？';
             wxShare(shareData);
         }
