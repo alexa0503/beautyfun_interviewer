@@ -45,8 +45,8 @@ class HomeController extends Controller
                 }
                 else{
                     $info->has_win = 0;
-                    $info->lottery_time = nullValue();
-                    $info->lottery_ip = nullValue();
+                    //$info->lottery_time = nullValue();
+                    //$info->lottery_ip = nullValue();
                 }
                 $info->save();
                 if( $info->has_win = 1 )
@@ -91,7 +91,7 @@ class HomeController extends Controller
         }
         else{
             $info = \App\Info::find(\Session::get('info.id'));
-            if( null != $request->input('name') && '' != $request->input('name')){
+            if( null != $info->name && '' != $info->name && $info->has_win == 1){
                 $info->name = $request->input('name');
                 $info->mobile = $request->input('mobile');
                 $info->address = $request->input('address');

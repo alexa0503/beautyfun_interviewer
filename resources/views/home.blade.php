@@ -115,4 +115,3 @@
     <div class="pop popShare" onClick="closePop();" style="display:none;"></div>
     {!! csrf_field() !!}
 @endsection
-
