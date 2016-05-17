@@ -10,6 +10,6 @@ class Info extends Model
     public $timestamps = false;
     public function user()
     {
-        return $this->BelongsTo('App\WechatUser');
+        return $this->belongsTo('App\WechatUser');
     }
 }

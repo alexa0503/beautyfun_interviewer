@@ -36,12 +36,57 @@ class CmsController extends Controller
      * 微信授权用户
      * @return mixed
      */
-    public function wechat()
+    public function wechat($id = null)
     {
-        $wechat_users = DB::table('wechat_users')->paginate(20);
+        if( null == $id)
+            $wechat_users = DB::table('wechat_users')->paginate(20);
+        else
+            $wechat_users = DB::table('wechat_users')->where('id', $id)->paginate(20);
         return view('cms/wechat_user',['wechat_users' => $wechat_users]);
     }
 
+
+    /**
+     * 信息
+     * @return mixed
+     */
+    public function infos(Request $request)
+    {
+        if( 'has_win' == $request->segment(3))
+            $infos = \App\Info::where('has_win',1)->paginate(20);
+        else
+            $infos = \App\Info::paginate(20);
+        return view('cms/infos',['infos' => $infos]);
+    }
+    public function infosExport()
+    {
+        $filename = 'info_'.date('YmdHis');
+        $collection = \App\Info::where('has_win',1)->get();
+        $data = $collection->map(function($item){
+            return [
+                $item->id,
+                json_decode($item->user->nick_name),
+                $item->user->open_id,
+                $item->name,
+                $item->mobile,
+                $item->address,
+                $item->has_win == 1 ? '已中' : '未中',
+                $item->created_time,
+                $item->created_ip,
+            ];
+        });
+        Excel::create($filename, function($excel) use($data) {
+            $excel->setTitle('信息');
+            // Chain the setters
+            $excel->setCreator('Alexa');
+            // Call them separately
+            $excel->setDescription('A demonstration to change the file properties');
+            $excel->sheet('Sheet', function($sheet) use($data) {
+                $sheet->row(1, array('ID','微信昵称','微信openid','姓名','手机','地址','是否中奖','创建时间','创建IP'));
+                $sheet->fromArray($data, null, 'A2', false, false);
+            });
+        })->download('xlsx');
+    }
     /**
      * 账户管理
      */

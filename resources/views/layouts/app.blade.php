@@ -16,7 +16,7 @@
         function wxShare(data) {
             /* 请修改以下文字和图片，定制分享文案 */
             DATAForWeixin.setTimeLine({
-                title: data.desc,
+                title: data.title,
                 imgUrl: data.imgUrl,
                 link: data.link
                 //success:function(){}
@@ -68,12 +68,11 @@
 @yield('content')
 
         <!-- JavaScripts -->
-
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script src="http://wx.addechina.net/resources/Scripts/weixinjssdk.js"></script>
 <script type="text/javascript">
     // 可设置为 true 以调试
-    DATAForWeixin.debug = true;
+    DATAForWeixin.debug = false;
     //账号的appid
     DATAForWeixin.appId = '{{env("WECHAT_APPID")}}';
     DATAForWeixin.openid = '';
