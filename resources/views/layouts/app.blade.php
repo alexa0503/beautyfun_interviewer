@@ -7,6 +7,7 @@
     <title>{{env('PAGE_TITLE')}}</title>
     <link rel="stylesheet" href="{{asset('css/common.css')}}">
     <script>
+	var needToInfo=false;
         var shareData = {
             'title': '{{env("WECHAT_SHARE_TITLE")}}',
             'desc': '{{env("WECHAT_SHARE_DESC")}}',
@@ -37,7 +38,7 @@
         }
         function updateShare() {
             shareData.title = '【{{json_decode(\Session::get("wechat.nickname"))}}】'+'参加了职场招聘大会，获得面试官的青睐，静待Offer！';
-            shareData.dec = '面试官还送神秘大礼？';
+            shareData.dec = '听说，表现得好还有神秘大礼和好职位申请哦~';
             wxShare(shareData);
         }
     </script>
@@ -68,6 +69,7 @@
 @yield('content')
 
         <!-- JavaScripts -->
+
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script src="http://wx.addechina.net/resources/Scripts/weixinjssdk.js"></script>
 <script type="text/javascript">
@@ -82,6 +84,21 @@
 @else
     updateShare();
 @endif
+
+@if($info != null && $info->name == null && $info->has_win == 1)
+	needToInfo=true;
+@endif
 </script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?0f140859aee948a0688beea164bd6667";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 </body>
 </html>

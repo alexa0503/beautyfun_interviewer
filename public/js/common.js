@@ -50,7 +50,14 @@ function loadingImg() {
                 }
             },
             all: function () {
-                goPage1();
+				goPage1();
+				/*if(needToInfo){
+					$('.page0').fadeOut(500);
+					$('.page4').fadeIn(500);
+					}
+					else{
+						goPage1();
+						}*/
             }
         });
 }
@@ -198,8 +205,9 @@ function selQus(e) {
             setTimeout(function () {
                 $('.page2Img2').addClass('page2Img2Act');
                 setTimeout(function () {
+					$('.page22Txt').fadeIn(500);
                     $('.page22Btns').fadeIn(500);
-                }, 800);
+                }, 1500);
             }, 500);
             break;
         case 3:
@@ -209,8 +217,9 @@ function selQus(e) {
             setTimeout(function () {
                 $('.page2Img3').addClass('page2Img3Act');
                 setTimeout(function () {
+					$('.page23Txt').fadeIn(500);
                     $('.page23Btns').fadeIn(500);
-                }, 800);
+                }, 1500);
             }, 500);
             break;
         case 4:
@@ -221,7 +230,7 @@ function selQus(e) {
                 $('.page2Img4').addClass('page2Img4Act');
                 setTimeout(function () {
                     $('.page24Btns').fadeIn(500);
-                }, 1200);
+                }, 5000);
             }, 500);
             break;
         case 5:
@@ -232,7 +241,7 @@ function selQus(e) {
                 $('.page2Img5').addClass('page2Img5Act');
                 setTimeout(function () {
                     $('.page25Btns').fadeIn(500);
-                }, 1200);
+                }, 2400);
             }, 500);
             break;
         default:
@@ -362,3 +371,21 @@ function showShare() {
 function playAgain() {
     window.location.reload();
 }
+
+var isPlay=true;
+function bgmCon(){
+	if(isPlay){
+		isPlay=false;
+		var bgm=document.getElementById('bgm');
+		bgm.pause();
+		$('.bgm1').hide();
+		$('.bgm2').show();
+		}
+		else{
+			isPlay=true;
+			var bgm=document.getElementById('bgm');
+			bgm.play();
+			$('.bgm2').hide();
+			$('.bgm1').show();
+			}
+	}

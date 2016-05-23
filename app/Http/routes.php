@@ -12,7 +12,7 @@ Route::any('/wechat', 'WechatController@serve');
 */
 Route::get('/', 'HomeController@index');
 Route::post('/post', 'HomeController@post');
-Route::post('/lottery', 'HomeController@lottery');
+Route::any('/lottery', 'HomeController@lottery');
 /*
 |--------------------------------------------------------------------------
 | Application Routes

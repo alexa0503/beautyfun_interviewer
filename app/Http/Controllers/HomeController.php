@@ -18,45 +18,70 @@ class HomeController extends Controller
 
     public function index()
     {
+        //\Session::set('wechat.id', null);
+        //return \Session::get('wechat.id');
         $info = \App\Info::where('user_id', \Session::get('wechat.id') )->first();
+        if( $info != null && $info->has_win == 1 ){
+            \Session::set('info.id', $info->id);
+        }
         return view('home', ['info'=>$info]);
     }
     public function lottery(Request $request)
     {
-        $result = ['ret'=>0,'msg'=>'','has_win'=>0];
+        $result = ['ret'=>0,'msg'=>'','has_win'=>0,'wechat.id'=>\Session::get('wechat.id')];
         DB::beginTransaction();
         try{
+            $date = date('Y-m-d');
+            #该微信用户提交信息数 用于判断
             $count = \App\Info::where('user_id', \Session::get('wechat.id') )->count();
-            $rand1 = rand(1,5);
-            $rand2 = rand(1,5);
-            if( $count == 0){
+            #总计中奖数
+            $sum = \App\Info::where('has_win', 1)->count();
+            //当日已中数
+            $num1 = \App\Info::where('has_win', 1)
+                ->where('created_time', '>=', $date)
+                ->where('created_time', '<=', $date.' 23:59:59')
+                ->count();
+            //今天可抽奖数量
+            $num2 = 0;
+            if( $date == '2016-05-23' ){
+                $num2 = 4;
+            }
+            elseif( $date == '2016-05-24' ){
+                $num2 = 3;
+            }
+            elseif( $date == '2016-05-25' ){
+                $num2 = 3;
+            }
+            $rand1 = rand(1, 100);
+            $rand2 = rand(1, 100);
+
+            //中奖
+            if( $rand1 == $rand2 && $sum < 10 && $num1 < $num2)
+                $has_win = true;
+            else
+                $has_win = false;
+            if( $count == 0 ){
                 $info = new \App\Info();
-                $info->name = nullValue();
-                $info->mobile = nullValue();
-                $info->address = nullValue();
                 $info->created_time = Carbon::now();
                 $info->created_ip = $request->ip();
                 $info->user_id = \Session::get('wechat.id');
 
-                if( $rand1 == $rand2 ){
+                if( $has_win ){
                     $info->has_win = 1;
                     $info->lottery_time = Carbon::now();
                     $info->lottery_ip = $request->ip();
+                    \Session::set('info.id', $info->id);
                 }
                 else{
                     $info->has_win = 0;
-                    //$info->lottery_time = nullValue();
-                    //$info->lottery_ip = nullValue();
                 }
                 $info->save();
-                if( $info->has_win = 1 )
-                    \Session::set('info.id', $info->id);
                 $result['has_win'] = $info->has_win;
             }
             else{
                 $info = \App\Info::where('user_id', \Session::get('wechat.id') )->first();
                 $result['has_win'] = $info->has_win;
-                if( $rand1 == $rand2 && $info->has_win == 0){
+                if( $has_win && $info->has_win == 0){
                     $info->has_win = 1;
                     $info->lottery_time = Carbon::now();
                     $info->lottery_ip = $request->ip();
@@ -64,7 +89,6 @@ class HomeController extends Controller
                     $result['has_win'] = 1;
                     \Session::set('info.id', $info->id);
                 }
-
             }
             DB::commit();
         }catch (Exception $e){
@@ -91,7 +115,7 @@ class HomeController extends Controller
         }
         else{
             $info = \App\Info::find(\Session::get('info.id'));
-            if( null != $info->name && '' != $info->name && $info->has_win == 1){
+            if( null == $info->name && $info->has_win == 1){
                 $info->name = $request->input('name');
                 $info->mobile = $request->input('mobile');
                 $info->address = $request->input('address');
