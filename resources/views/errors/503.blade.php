@@ -3,7 +3,7 @@
     <head>
         <title>Be right back.</title>
 
-        <link href="{{asset('css/lato.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('assets/cms/css/lato.css')}}" rel="stylesheet" type="text/css">
 
         <style>
             html, body {
