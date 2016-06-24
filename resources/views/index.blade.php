@@ -43,7 +43,7 @@ $(function(){
 	    }
 	});
 	loadingLoadingImg();
-	getBtn5();
+	getBtn{{\Session::get('wechat.level')}}();
 });
 function goAct(e){
 	if(canClick.toString().indexOf(e)>=0){

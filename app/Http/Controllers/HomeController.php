@@ -17,10 +17,19 @@ class HomeController extends Controller
 
     public function index()
     {
+        $level = \Session::get('wechat.level');
+
         return view('index');
     }
     public function level(Request $request, $id)
     {
+        $wechat_user = \App\WechatUser::find(\Session::get('wechat.id'));
+        if ($wechat_user->level == $id - 1) {
+            $wechat_user->level = $id;
+            $wechat_user->save();
+        } elseif ($wechat_user->level < $id - 1) {
+            return redirect('/');
+        }
         $info = \App\Info::where('user_id', \Session::get('wechat.id'))->first();
 
         return view('level_'.$id, ['info' => $info]);
