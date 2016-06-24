@@ -14,6 +14,19 @@ Route::get('/', 'HomeController@index');
 Route::get('level/{id}', 'HomeController@level');
 Route::post('/post', 'HomeController@post');
 Route::any('/lottery', 'HomeController@lottery');
+Route::any('login', function () {
+    $user = \App\WechatUser::find(1);
+    \Session::set('wechat.id', $user->id);
+    \Session::set('wechat.level', $user->level);
+
+    return redirect('/');
+});
+Route::any('logout', function () {
+    //$user = \App\WechatUser::find(1);
+    \Session::set('wechat', null);
+    //\Session::set('wechat.level', $user->level);
+    return redirect('/');
+});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
