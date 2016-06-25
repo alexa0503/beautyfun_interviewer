@@ -15,7 +15,7 @@
             'title': '{{env("WECHAT_SHARE_TITLE")}}',
             'desc': '{{env("WECHAT_SHARE_DESC")}}',
             'link': '{{url("/")}}',
-            'imgUrl': '{{ asset("WECHAT_SHARE_IMG")}}'
+            'imgUrl': '{{ asset(env("WECHAT_SHARE_IMG"))}}'
         }
         function wxShare(data) {
             /* 请修改以下文字和图片，定制分享文案 */
