@@ -402,6 +402,7 @@ function clearDoudou(e) {
         if (doudouNumb == 9) {
             $('.p3a3').delay(500).fadeOut(500);
             $('.p3a4').delay(500).fadeIn(500);
+            updateShare();
         }
     }
 }
@@ -540,6 +541,7 @@ function waterGo() {
                 clearInterval(wInterval);
                 $('.p3a3').delay(1000).fadeOut(500);
                 $('.p3a4').delay(1000).fadeIn(500);
+                updateShare();
             }
         }
     }, 450);
@@ -678,6 +680,7 @@ function game7Init() {
                 $('#page7Img3b').eraser('clear');
                 $('.p3a3').delay(1000).fadeOut(500);
                 $('.p3a4').delay(1000).fadeIn(500);
+                updateShare();
             }
         }
     });
