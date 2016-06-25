@@ -223,6 +223,7 @@ function getGame3() {
     $('.p3a3Btn img').off('touchend');
     $('.p3a3').delay(500).fadeOut(500);
     $('.p3a4').delay(500).fadeIn(500);
+    updateShare();
 }
 
 /*page4*/
@@ -727,13 +728,13 @@ function submitInfo(url) {
                     alert('信息提交成功');
                 } else {
                     $('.infoTxt').prop('disabled', true);
-                    $('.infoBtn1').show();
+                    $('.infoBtn1').hide();
                     canSubmitInfo = true;
                 }
             },
             error: function() {
                 //提交失败
-                $('.infoTxt').prop('disabled', true);
+                $('.infoTxt').prop('disabled', false);
                 $('.infoBtn1').show();
                 canSubmitInfo = true;
             }

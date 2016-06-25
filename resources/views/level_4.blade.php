@@ -36,33 +36,21 @@
                 <div class="p3a4" style="display:none;">
                 	<div class="page6Img4 bgImg"></div>
                     <div class="abs p3a4Btn">
-                    	<a href="url('level/5')"><img src="{{asset('assets/images/page6Btn3.png')}}"></a>
-                        <a href="javascript:void(0);" onClick="getLottery();"><img src="{{asset('assets/images/page6Btn4.png')}}"></a>
+                    	<a href="{{url('level/5')}}"><img src="{{asset('assets/images/page6Btn3.png')}}"></a>
+                        <a href="javascript:void(0);" onClick="getLottery('{{url("lottery")}}');;"><img src="{{asset('assets/images/page6Btn4.png')}}"></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="page pageInfo1" style="display:none;">
-    	<div class="h980">
-        	<div class="innerDiv">
-            	<div class="pageInfoImg1 bgImg"></div>
-                <input type="text" class="infoTxt infoTxt1" maxlength="20">
-                <input type="tel" class="infoTxt infoTxt2" maxlength="11">
-                <input type="text" class="infoTxt infoTxt3" maxlength="40">
-                <a href="javascript:void(0);" onClick="submitInfo();" class="abs infoBtn1"><img src="{{asset('assets/images/infoBtn1.png')}}"></a>
-                <a href="url('/')" class="abs infoBtn2"><img src="{{asset('assets/images/infoBtn2.png')}}"></a>
-                <a href="javascript:void(0);" onClick="showShareNote();" class="abs infoBtn3"><img src="{{asset('assets/images/infoBtn3.png')}}"></a>
-            </div>
-        </div>
-    </div>
+    @include('info')
 
     <div class="page pageInfo2" style="display:none;">
     	<div class="h980">
         	<div class="innerDiv">
             	<div class="pageInfoImg2 bgImg"></div>
-                <a href="url('/')" class="abs infoBtn4"><img src="{{asset('assets/images/infoBtn4.png')}}"></a>
+                <a href="{{url('/')}}" class="abs infoBtn4"><img src="{{asset('assets/images/infoBtn4.png')}}"></a>
                 <a href="javascript:void(0);" onClick="showShareNote();" class="abs infoBtn5"><img src="{{asset('assets/images/infoBtn5.png')}}"></a>
             </div>
         </div>
@@ -75,6 +63,12 @@
 @endsection
 @section('scripts')
 <script>
+function updateShare(){
+	shareData.imgUrl = '{{asset("assets/images/share_4.jpg")}}';
+	shareData.title = '我成功拯救了Andy，Andy还送了我一份大礼！';
+	shareData.desc = '单挑拯救世界！';
+	wxShare(shareData);
+}
 $(function(){
 	$.ajaxSetup({
 	    headers: {
