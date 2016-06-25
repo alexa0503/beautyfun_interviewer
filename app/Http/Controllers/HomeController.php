@@ -17,9 +17,10 @@ class HomeController extends Controller
 
     public function index()
     {
-        $level = \Session::get('wechat.level');
+        $wechat_user = \App\WechatUser::find(\Session::get('wechat.id'));
+        $level = $wechat_user->level;
 
-        return view('index');
+        return view('index',['level'=>$level]);
     }
     public function level(Request $request, $id)
     {

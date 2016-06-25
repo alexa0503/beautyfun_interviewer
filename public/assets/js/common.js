@@ -206,7 +206,7 @@ function startGame3() {
     $('.p3a3Btn img').on('touchstart', function() {
         g3Time = setTimeout(function() {
             getGame3();
-        }, 3000);
+        }, 2000);
     });
     $('.p3a3Btn img').on('touchend', function() {
         if (isG3End) {
@@ -298,7 +298,7 @@ function startGame4() {
     $('.p3a3Btn img').on('touchstart', function() {
         g4Time = setTimeout(function() {
             getGame4();
-        }, 3000);
+        }, 2000);
     });
     $('.p3a3Btn img').on('touchend', function() {
         if (isG4End) {
