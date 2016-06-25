@@ -33,7 +33,7 @@ class HomeController extends Controller
         }
         $info = \App\Info::where('user_id', \Session::get('wechat.id'))->first();
 
-        return view('level_'.$id, ['info' => $info]);
+        return view('level_'.$id, ['info' => $info,'next_level'=>($id+1)]);
     }
     public function lottery(Request $request)
     {
