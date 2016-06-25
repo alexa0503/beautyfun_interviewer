@@ -315,6 +315,7 @@ function getGame4() {
     $('.p3a3Btn img').off('touchend');
     $('.p3a3').delay(500).fadeOut(500);
     $('.p3a4').delay(500).fadeIn(500);
+    updateShare();
 }
 
 /*page5*/
