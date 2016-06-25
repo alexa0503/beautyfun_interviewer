@@ -12,7 +12,7 @@
                 <input type="tel" class="infoTxt infoTxt2" maxlength="11" value="{{$info->mobile}}" disabled="true">
                 <input type="text" class="infoTxt infoTxt3" maxlength="40" value="{{$info->address}}" disabled="true">
                 @endif
-                @if ($next_level > 5)
+                @if ($next_level <= 5)
                 <a href="{{url('level/'.$next_level)}}" class="abs infoBtn2"><img src="{{asset('assets/images/infoBtn2.png')}}"></a>
                 @else
                 <a href="{{url('/')}}" class="abs infoBtn2"><img src="{{asset('assets/images/infoBtn2.png')}}"></a>
