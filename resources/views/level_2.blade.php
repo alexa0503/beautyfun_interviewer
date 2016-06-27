@@ -27,6 +27,7 @@
                 	<div class="page4Img3 bgImg"></div>
                     <div class="abs p3a3Btn">
                     	<img src="{{asset('assets/images/page4Btn2.png')}}">
+                        <canvas class="touchBtn" width="310" height="80"></canvas>
                     </div>
                 </div>
                 <div class="p3a4" style="display:none;">

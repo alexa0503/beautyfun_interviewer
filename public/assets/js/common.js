@@ -210,12 +210,12 @@ var g3Time;
 var isG3End = false;
 
 function startGame3() {
-    $('.p3a3Btn img').on('touchstart', function() {
+    $('.p3a3Btn .touchBtn').on('touchstart', function() {
         g3Time = setTimeout(function() {
             getGame3();
         }, 2000);
     });
-    $('.p3a3Btn img').on('touchend', function() {
+    $('.p3a3Btn .touchBtn').on('touchend', function() {
         if (isG3End) {
             return false;
         } else {
@@ -303,12 +303,12 @@ var g4Time;
 var isG4End = false;
 
 function startGame4() {
-    $('.p3a3Btn img').on('touchstart', function() {
+    $('.p3a3Btn .touchBtn').on('touchstart', function() {
         g4Time = setTimeout(function() {
             getGame4();
         }, 2000);
     });
-    $('.p3a3Btn img').on('touchend', function() {
+    $('.p3a3Btn .touchBtn').on('touchend', function() {
         if (isG4End) {
             return false;
         } else {

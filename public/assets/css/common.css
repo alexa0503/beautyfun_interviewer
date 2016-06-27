@@ -131,6 +131,10 @@ select,input,textarea{font-family:inherit; outline:none;}
 .p3a4Btn{ width:640px; left:0; top:750px; text-align:center;}
 .p3a4Btn a{ display:inline-block; margin-bottom:17px;}
 
+
+.touchBtn{ position:absolute; top:-5px; left:165px;}
+
+
 /*page4*/
 .page4Img1{ background:url(../images/page4Img1.png) 0 0 no-repeat;}
 .page4Img21{ background:url(../images/page4Img21.png) 0 0 no-repeat}
