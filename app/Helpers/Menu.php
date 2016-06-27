@@ -14,13 +14,10 @@ class Menu
     {
         $list = [
             ['cms', 'Dashboard'],
-            [
-                ['#', '新闻管理'],
-                ['cms/post', '查看'],
-                ['cms/post/create', '添加'],
-            ],
             ['cms/wechat', '用户授权记录'],
-            ['cms/infos', '照片查看'],
+            ['cms/infos', '信息查看'],
+            ['cms/infos/has_win', '中奖查看'],
+            ['cms/infos/export', '中奖信息导出'],
         ];
         $html = '';
         foreach ($list as $menu) {

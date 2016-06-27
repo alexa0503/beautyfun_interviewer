@@ -24,24 +24,24 @@
                                     <thead>
                                     <tr>
                                         <th>微信昵称</th>
-                                        <th>标题</th>
-                                        <th>上传图片</th>
-                                        <th>点赞数</th>
-                                        <th>是否扫码</th>
-                                        <th>创建时间</th>
-                                        <th>创建IP</th>
+                                        <th>姓名</th>
+                                        <th>手机号</th>
+                                        <th>地址</th>
+                                        <th>是否中奖</th>
+                                        <th>抽奖时间</th>
+                                        <th>IP地址</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($infos as $info)
                                     <tr>
                                         <td><a href="{{url('cms/wechat',['id'=>$info->user->id])}}">{{ json_decode($info->user->nick_name) }}</a></td>
-                                        <td>{{ $info->title }}</td>
-                                        <td><a href="{{ asset($info->image_path) }}" target="_blank"><img src="{{ asset($info->image_path) }}" style="max-width:200px;max-height:200px;" class="img-polaroid" /></a></td>
-                                        <td>{{ $info->like_num }}</td>
-                                        <td>{{ $info->is_scan == 1 ? '是' : '否' }}</td>
-                                        <td>{{ $info->created_at }}</td>
-                                        <td>{{ $info->ip_address }}</td>
+                                        <td>{{ $info->name }}</td>
+                                        <td>{{ $info->mobile }}</td>
+                                        <td>{{ $info->address }}</td>
+                                        <td>{{ $info->has_win == 1 ? '是' : '否' }}</td>
+                                        <td>{{ $info->created_time }}</td>
+                                        <td>{{ $info->created_ip }}</td>
                                     </tr>
                                     @endforeach
                                     </tbody>
