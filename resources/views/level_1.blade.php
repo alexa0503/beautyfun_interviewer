@@ -46,7 +46,7 @@
     	<div class="h980">
         	<div class="innerDiv">
             	<div class="pageInfoImg2 bgImg"></div>
-                <a href="{{url('/')}}" class="abs infoBtn4"><img src="{{asset('assets/images/infoBtn4.png')}}"></a>
+                <a href="{{url('/?goSel=goSel')}}" class="abs infoBtn4"><img src="{{asset('assets/images/infoBtn4.png')}}"></a>
                 <a href="javascript:void(0);" onClick="showShareNote();" class="abs infoBtn5"><img src="{{asset('assets/images/infoBtn5.png')}}"></a>
             </div>
         </div>

@@ -75,18 +75,25 @@ function loadingPage1() {
 }
 
 function goPage1() {
-    $('.page0').fadeOut(500);
-    $('.page1').fadeIn(500);
-    $('.page1Img2').addClass('page1Img2Act').show();
-    $(".page1Img2").touchwipe({
-        min_move_x: 40, //横向灵敏度
-        min_move_y: 40, //纵向灵敏度
-        wipeUp: function() {
-            goPage2();
-        }, //向上滑动事件
-        //wipeDown: function() { $("#val").append("下，");}, //向下滑动事件
-        preventDefaultEvents: true //阻止默认事件
-    });
+	var goSel=queryString('goSel');
+	if(goSel=='goSel'){
+		$('.page0').fadeOut(500);
+		$('.page2').fadeIn(500);
+		}
+		else{
+			$('.page0').fadeOut(500);
+			$('.page1').fadeIn(500);
+			$('.page1Img2').addClass('page1Img2Act').show();
+			$(".page1Img2").touchwipe({
+				min_move_x: 40, //横向灵敏度
+				min_move_y: 40, //纵向灵敏度
+				wipeUp: function() {
+					goPage2();
+				}, //向上滑动事件
+				//wipeDown: function() { $("#val").append("下，");}, //向下滑动事件
+				preventDefaultEvents: true //阻止默认事件
+			});
+			}
 }
 
 function goPage2() {
@@ -772,3 +779,21 @@ function getLottery(url) {
 
     }
 }
+
+var isPlay=true;
+function bgmCon(){
+	if(isPlay){
+		isPlay=false;
+		var bgm=document.getElementById('bgm');
+		bgm.pause();
+		$('.bgm1').hide();
+		$('.bgm2').show();
+		}
+		else{
+			isPlay=true;
+			var bgm=document.getElementById('bgm');
+			bgm.play();
+			$('.bgm2').hide();
+			$('.bgm1').show();
+			}
+	}

@@ -187,3 +187,6 @@ select,input,textarea{font-family:inherit; outline:none;}
 
 .popBg{ width:100%; height:100%; position:fixed; left:0; top:0; background:#000; opacity:0.8; -webkit-opacity:0.8}
 .shareNote{ position:fixed; left:50%; top:0; margin-left:-320px;}
+
+.bmgBtn{ position:absolute; top:0; right:0;}
+.bmgBtn img{ padding:20px;}

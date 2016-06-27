@@ -78,5 +78,17 @@
    DATAForWeixin.sharecampaign = '{{env("WECHAT_CAMPAIGN_NAME")}}';//campaign名称
    wxShare(shareData)
 </script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?0f140859aee948a0688beea164bd6667";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<audio src="{{asset('assets/images/bgm.mp3')}}" id="bgm" preload="auto" autoplay loop style="display:none; height:0;"></audio>
+<a href="javascript:void(0);" class="bmgBtn" onClick="bgmCon();"><img src="{{asset('assets/images/bgmBtn1.png')}}" class="bgm1"><img src="{{asset('assets/images/bgmBtn2.png')}}" class="bgm2" style="display:none;"></a>
 </body>
 </html>
