@@ -36,6 +36,7 @@
                         <a href="javascript:void(0);" onClick="getLottery('{{url("lottery")}}');;"><img src="{{asset('assets/images/page3Btn4.png')}}"></a>
                     </div>
                 </div>
+                <div class="touchEff" style="display:none;"></div>
             </div>
         </div>
     </div>

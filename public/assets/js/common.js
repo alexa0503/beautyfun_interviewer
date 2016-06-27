@@ -171,6 +171,7 @@ function loadingPage3Detail() {
     images.push("/assets/images/page3Img22.png");
     images.push("/assets/images/page3Img3.png");
     images.push("/assets/images/page3Img4.png");
+	images.push("/assets/images/page3Img5.png");
     images.push("/assets/images/infoBg.png");
     images.push("/assets/images/infoBg2.png");
 
@@ -211,14 +212,19 @@ var isG3End = false;
 
 function startGame3() {
     $('.p3a3Btn .touchBtn').on('touchstart', function() {
+		$('.touchEff').show();
+		$('.p3a3Btn img').addClass('biger');
         g3Time = setTimeout(function() {
             getGame3();
         }, 2000);
     });
     $('.p3a3Btn .touchBtn').on('touchend', function() {
         if (isG3End) {
+			$('.touchEff').hide();
             return false;
         } else {
+			$('.touchEff').hide();
+			$('.p3a3Btn img').removeClass('biger');
             clearTimeout(g3Time);
         }
     });
@@ -226,6 +232,7 @@ function startGame3() {
 
 function getGame3() {
     isG3End = true;
+	$('.touchEff').hide();
     $('.p3a3Btn img').off('touchstart');
     $('.p3a3Btn img').off('touchend');
     $('.p3a3').delay(500).fadeOut(500);
@@ -304,6 +311,8 @@ var isG4End = false;
 
 function startGame4() {
     $('.p3a3Btn .touchBtn').on('touchstart', function() {
+		$('.page4Img3').addClass('page4Img3b');
+		$('.p3a3Btn img').addClass('biger');
         g4Time = setTimeout(function() {
             getGame4();
         }, 2000);
@@ -312,6 +321,8 @@ function startGame4() {
         if (isG4End) {
             return false;
         } else {
+			$('.page4Img3').removeClass('page4Img3b');
+			$('.p3a3Btn img').removeClass('biger');
             clearTimeout(g4Time);
         }
     });
@@ -520,7 +531,7 @@ function game6Init() {
 
     wInterval = setInterval(function() {
         waterGo()
-    }, 1000);
+    }, 1600);
 }
 
 var wL = ['60px', '300px', '500px', '150px', '380px'];
@@ -537,7 +548,7 @@ function waterGo() {
     }).show();
     $('.page6Img5').stop().animate({
         top: 600
-    }, 800, 'swing', function() {
+    }, 1400, 'swing', function() {
         wS++;
     });
     setTimeout(function() {
@@ -546,6 +557,8 @@ function waterGo() {
             $('.page6Img5').hide();
             $('#testP').html(getW);
             getW++;
+			$('.page6Img3b').addClass('page6Img3c');
+			setTimeout(function(){$('.page6Img3b').removeClass('page6Img3c');},800);
             $('.we').css('background-position', getW * (-39) + 'px');
             if (getW == 6) {
                 clearInterval(wInterval);
@@ -555,7 +568,7 @@ function waterGo() {
 				//over4
             }
         }
-    }, 450);
+    }, 800);
 }
 
 function down(event) {
