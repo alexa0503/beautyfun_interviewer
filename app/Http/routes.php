@@ -12,6 +12,7 @@ Route::any('/wechat', 'WechatController@serve');
 */
 Route::get('/', 'HomeController@index');
 Route::get('level/{id}', 'HomeController@level');
+Route::any('unlock/{level}', 'HomeController@unlock');
 Route::post('/post', 'HomeController@post');
 Route::any('/lottery', 'HomeController@lottery');
 Route::any('login', function () {

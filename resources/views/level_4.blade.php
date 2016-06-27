@@ -68,6 +68,7 @@ function updateShare(){
 	shareData.title = '我成功拯救了Andy，Andy还送了我一份大礼！';
 	shareData.desc = '单挑拯救世界！';
 	wxShare(shareData);
+	$.get('{{asset("unlock/5")}}');
 }
 $(function(){
 	$.ajaxSetup({

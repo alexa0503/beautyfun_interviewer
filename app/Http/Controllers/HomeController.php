@@ -24,16 +24,19 @@ class HomeController extends Controller
     }
     public function level(Request $request, $id)
     {
-        $wechat_user = \App\WechatUser::find(\Session::get('wechat.id'));
-        if ($wechat_user->level == $id - 1) {
-            $wechat_user->level = $id;
-            $wechat_user->save();
-        } elseif ($wechat_user->level < $id - 1) {
-            return redirect('/');
-        }
+
         $info = \App\Info::where('user_id', \Session::get('wechat.id'))->first();
 
         return view('level_'.$id, ['info' => $info,'next_level'=>($id+1)]);
+    }
+    public function unlock(Request $request, $level)
+    {
+        $wechat_user = \App\WechatUser::find(\Session::get('wechat.id'));
+        if ($wechat_user->level == $level - 1) {
+            $wechat_user->level = $level;
+            $wechat_user->save();
+        }
+        return;
     }
     public function lottery(Request $request)
     {

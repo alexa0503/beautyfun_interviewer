@@ -64,6 +64,7 @@ function updateShare(){
 	shareData.title = '我成功拯救了尔康，尔康还送了我一份大礼！';
 	shareData.desc = '单挑拯救世界！';
 	wxShare(shareData);
+	$.get('{{asset("unlock/3")}}');
 }
 $(function(){
 	$.ajaxSetup({

@@ -692,7 +692,6 @@ function game7Init() {
                 $('.p3a3').delay(1000).fadeOut(500);
                 $('.p3a4').delay(1000).fadeIn(500);
                 updateShare();
-				//over5
             }
         }
     });
