@@ -22,6 +22,12 @@ $(function() {
             e.preventDefault();
         });
     }
+	$('.p3a3').on('touchmove', function(e) {
+		e.preventDefault();
+		});
+	$('.touchBtn').on('touchmove', function(e) {
+		e.preventDefault();
+		});
     $('.shareNote').on('touchmove', function(e) {
         e.preventDefault();
     });
@@ -212,6 +218,7 @@ var isG3End = false;
 
 function startGame3() {
     $('.p3a3Btn .touchBtn').on('touchstart', function() {
+		e.preventDefault();
 		$('.touchEff').show();
 		$('.p3a3Btn img').addClass('biger');
         g3Time = setTimeout(function() {
@@ -219,6 +226,7 @@ function startGame3() {
         }, 2000);
     });
     $('.p3a3Btn .touchBtn').on('touchend', function() {
+		e.preventDefault();
         if (isG3End) {
 			$('.touchEff').hide();
             return false;
@@ -311,6 +319,7 @@ var isG4End = false;
 
 function startGame4() {
     $('.p3a3Btn .touchBtn').on('touchstart', function() {
+		e.preventDefault();
 		$('.page4Img3').addClass('page4Img3b');
 		$('.p3a3Btn img').addClass('biger');
         g4Time = setTimeout(function() {
@@ -318,6 +327,7 @@ function startGame4() {
         }, 2000);
     });
     $('.p3a3Btn .touchBtn').on('touchend', function() {
+		e.preventDefault();
         if (isG4End) {
             return false;
         } else {
