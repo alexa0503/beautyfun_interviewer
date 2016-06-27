@@ -231,6 +231,7 @@ function getGame3() {
     $('.p3a3').delay(500).fadeOut(500);
     $('.p3a4').delay(500).fadeIn(500);
     updateShare();
+	//over1
 }
 
 /*page4*/
@@ -323,6 +324,7 @@ function getGame4() {
     $('.p3a3').delay(500).fadeOut(500);
     $('.p3a4').delay(500).fadeIn(500);
     updateShare();
+	//over2
 }
 
 /*page5*/
@@ -410,6 +412,7 @@ function clearDoudou(e) {
             $('.p3a3').delay(500).fadeOut(500);
             $('.p3a4').delay(500).fadeIn(500);
             updateShare();
+			//over3
         }
     }
 }
@@ -549,6 +552,7 @@ function waterGo() {
                 $('.p3a3').delay(1000).fadeOut(500);
                 $('.p3a4').delay(1000).fadeIn(500);
                 updateShare();
+				//over4
             }
         }
     }, 450);
@@ -688,6 +692,7 @@ function game7Init() {
                 $('.p3a3').delay(1000).fadeOut(500);
                 $('.p3a4').delay(1000).fadeIn(500);
                 updateShare();
+				//over5
             }
         }
     });
