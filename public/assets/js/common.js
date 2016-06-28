@@ -28,6 +28,9 @@ $(function() {
 	$('.touchBtn').on('touchmove', function(e) {
 		e.preventDefault();
 		});
+	document.oncontextmenu=function(){ 
+	  window.event.returnValue=false; 
+	} 
     $('.shareNote').on('touchmove', function(e) {
         e.preventDefault();
     });
@@ -210,6 +213,7 @@ function goPage3() {
 function goP3a3() {
     $('.p3a2').fadeOut(500);
     $('.p3a3').fadeIn(500);
+	$('.touchBtn').show();
     startGame3();
 }
 
@@ -218,7 +222,7 @@ var isG3End = false;
 
 function startGame3() {
     $('.p3a3Btn .touchBtn').on('touchstart', function() {
-		e.preventDefault();
+		//e.preventDefault();
 		$('.touchEff').show();
 		$('.p3a3Btn img').addClass('biger');
         g3Time = setTimeout(function() {
@@ -226,7 +230,7 @@ function startGame3() {
         }, 2000);
     });
     $('.p3a3Btn .touchBtn').on('touchend', function() {
-		e.preventDefault();
+		//e.preventDefault();
         if (isG3End) {
 			$('.touchEff').hide();
             return false;
@@ -240,6 +244,7 @@ function startGame3() {
 
 function getGame3() {
     isG3End = true;
+	$('.touchBtn').hide();
 	$('.touchEff').hide();
     $('.p3a3Btn img').off('touchstart');
     $('.p3a3Btn img').off('touchend');
@@ -311,6 +316,7 @@ function goPage4() {
 function goP4a3() {
     $('.p3a2').fadeOut(500);
     $('.p3a3').fadeIn(500);
+	$('.touchBtn').show();
     startGame4();
 }
 
@@ -319,7 +325,7 @@ var isG4End = false;
 
 function startGame4() {
     $('.p3a3Btn .touchBtn').on('touchstart', function() {
-		e.preventDefault();
+		//e.preventDefault();
 		$('.page4Img3').addClass('page4Img3b');
 		$('.p3a3Btn img').addClass('biger');
         g4Time = setTimeout(function() {
@@ -327,7 +333,7 @@ function startGame4() {
         }, 2000);
     });
     $('.p3a3Btn .touchBtn').on('touchend', function() {
-		e.preventDefault();
+		//e.preventDefault();
         if (isG4End) {
             return false;
         } else {
@@ -340,6 +346,7 @@ function startGame4() {
 
 function getGame4() {
     isG4End = true;
+	$('.touchBtn').hide();
     $('.p3a3Btn img').off('touchstart');
     $('.p3a3Btn img').off('touchend');
     $('.p3a3').delay(500).fadeOut(500);

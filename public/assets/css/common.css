@@ -142,7 +142,7 @@ select,input,textarea{font-family:inherit; outline:none;}
 100%{ background-position:-965px 0;}
 }
 
-.touchBtn{ position:absolute; top:-5px; left:165px;}
+.touchBtn{ position:absolute; left:0%; top:0; z-index:99;}
 
 
 /*page4*/
