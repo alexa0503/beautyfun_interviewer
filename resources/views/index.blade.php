@@ -14,7 +14,7 @@
     	<div class="h980">
         	<div class="innerDiv">
             	<div class="page1Img1 page1Img1Act bgImg"></div>
-                <div class="page1Img2 bgImg"></div>
+                <div class="page1Img2 bgImg" style="top:-58px;"></div>
                 <img src="{{asset('assets/images/downArrow.png')}}" class="downArrow">
             </div>
         </div>

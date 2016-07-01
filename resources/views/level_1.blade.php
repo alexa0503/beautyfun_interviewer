@@ -25,7 +25,10 @@
                 <div class="p3a3" style="display:none;">
                 	<div class="page3Img3 bgImg"></div>
                     <div class="abs p3a3Btn">
-                    	<img src="{{asset('assets/images/page3Btn2.png')}}">
+                    	<div class="innerDiv">
+                        	<img src="{{asset('assets/images/page3Btn2.png')}}">
+                            <canvas class="touchBtn" width="640" height="300"></canvas>
+                        </div>
                     </div>
                 </div>
                 <div class="p3a4" style="display:none;">
@@ -35,6 +38,7 @@
                         <a href="javascript:void(0);" onClick="getLottery('{{url("lottery")}}');;"><img src="{{asset('assets/images/page3Btn4.png')}}"></a>
                     </div>
                 </div>
+                <div class="touchEff" style="display:none;"></div>
             </div>
         </div>
     </div>
