@@ -55,11 +55,11 @@ class HomeController extends Controller
                 ->count();
             //今天可抽奖数量
             $num2 = 0;
-            if ($date == '2016-06-25') {
+            if ($date == '2016-07-04') {
                 $num2 = 4;
-            } elseif ($date == '2016-06-24') {
+            } elseif ($date == '2016-07-05') {
                 $num2 = 3;
-            } elseif ($date == '2016-06-25') {
+            } elseif ($date == '2016-07-06') {
                 $num2 = 3;
             }
             $rand1 = rand(1, 1);
