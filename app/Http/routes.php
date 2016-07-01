@@ -11,8 +11,23 @@ Route::group(['middleware' => ['web','wechat.oauth']], function () {
 Route::any('/wechat', 'WechatController@serve');
 */
 Route::get('/', 'HomeController@index');
+Route::get('level/{id}', 'HomeController@level');
+Route::any('unlock/{level}', 'HomeController@unlock');
 Route::post('/post', 'HomeController@post');
 Route::any('/lottery', 'HomeController@lottery');
+Route::any('login', function () {
+    $user = \App\WechatUser::find(1);
+    \Session::set('wechat.id', $user->id);
+    \Session::set('wechat.level', $user->level);
+
+    return redirect('/');
+});
+Route::any('logout', function () {
+    //$user = \App\WechatUser::find(1);
+    \Session::set('wechat', null);
+    //\Session::set('wechat.level', $user->level);
+    return redirect('/');
+});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -29,7 +44,7 @@ Route::get('cms/login', 'Auth\AuthController@getLogin');
 Route::post('cms/login', 'Auth\AuthController@postLogin');
 Route::get('cms/logout', 'Auth\AuthController@logout');
 //屏蔽注册路由
-Route::any('/register', function(){
+Route::any('/register', function () {
 
 });
 //Route::get('/register', 'Auth\AuthController@getRegister');
@@ -52,13 +67,14 @@ Route::get('/cms/infos/export', 'CmsController@infosExport');
 Route::any('/wechat/auth', 'WechatController@auth');
 Route::any('/wechat/callback', 'WechatController@callback');
 //初始化后台帐号
-Route::get('cms/account/install', function(){
-    if( 0 == \App\User::count()){
+Route::get('cms/account/install', function () {
+    if (0 == \App\User::count()) {
         $user = new \App\User();
         $user->name = 'admin';
         $user->email = 'admin@admin.com';
         $user->password = bcrypt('admin123');
         $user->save();
     }
+
     return redirect('/cms');
 });
